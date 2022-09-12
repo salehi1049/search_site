@@ -1,14 +1,19 @@
+from msilib.schema import tables
 from bs4 import BeautifulSoup
 import requests
+import pandas as pd
 from openpyxl import Workbook
+
 workbook = Workbook()
 sheet = workbook.active
 article_title=[]
 article_author=[]
 
+# tables=pd.read_html("https://sadaf.mrsservers.com:8443/smb/log-file/browser/id/769")
+# df1=tables[0]
+# temp=df1.head()
 
 page = requests.get("https://sadaf.mrsservers.com:8443/smb/log-file/browser/id/769")
-
 soup = BeautifulSoup(page.content, 'html.parser')
 
 s_id2= soup.findAll('div',attrs={'class':'brand-collapsed'})
